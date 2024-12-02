@@ -1,3 +1,5 @@
+import Banner from './src/components/Banner';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -5,7 +7,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        banner: "url('./assets/banner.jpg')"
+      }
+    },
   },
   plugins: [
     require('daisyui'),
