@@ -9,11 +9,16 @@ const CoffeeCards = () => {
     const [coffees, setCoffees] = useState([])
 
     useEffect(()=>{
+       if(category){
         const filterByCategory = [...data].filter(
             coffee => coffee.category === category
         )
         setCoffees(filterByCategory)
-    },[])
+       }
+       else{
+        setCoffees(data.slice(0,6))
+       }
+    },[category, data])
 
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
