@@ -7,10 +7,10 @@ const Categories = ({ categories }) => {
             {
                 categories.map(cate => 
                 <Link key={cate.category}
-                 to={`/category/ ${cate.category}`}
+                 to={`/category/${cate.category}`}
                   role="tab"
-                   className="tab">
-                    {cate.category}</Link>
+                   className="tab">{cate.category}
+                    </Link>
                 )
             }
         </div>
