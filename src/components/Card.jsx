@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Card = ({ coffee }) => {
-    const {id, name, image, category,popularity,type,origin,rating } = coffee
+    const { id, name, image, category, popularity, type, origin, rating } = coffee
     return (
         <div className='flex '>
             <Link to={`/coffee/${id}`}
-            className='transition hover:scale-105'
+                className='transition hover:scale-105'
             >
                 <div className="card bg-base-100 shadow-xl">
                     <figure className='h-48 w-full'>
