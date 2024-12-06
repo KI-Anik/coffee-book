@@ -6,14 +6,21 @@ const CoffeDetails = () => {
     const data = useLoaderData()
     const { id } = useParams()
     const [coffee, setCoffee] = useState({})
+    const [btn, setBtn] = useState(false)
 
     useEffect(() => {
-        const singleCoffee = data.find(coffee => coffee.id === parseInt(id))
-        setCoffee(singleCoffee)
-    }, []);
+        const singleData = data.find(coffee => coffee.id === parseInt(id))
+        setCoffee(singleData)
+        const favourite = getAllFav()
+        const isExits = favourite.find(item => item.id == singleData.id)
+        if(isExits){
+            setBtn(true)
+        }
+    }, [data, id]);
 
     const handleFavourite = coffee => {
         addFavourite(coffee)
+        setBtn(true)
     }
 
     return (
@@ -22,7 +29,11 @@ const CoffeDetails = () => {
             <h2>
                 Coffee Details: {coffee.description}
             </h2>
-            <button onClick={() => handleFavourite(coffee) } className='btn btn-warning'>Add to Favourite</button>
+            <button disabled={btn} onClick={() =>
+
+                handleFavourite(coffee)}
+                className='btn btn-warning'
+            >Add to Favourite</button>
         </div>
     );
 };
