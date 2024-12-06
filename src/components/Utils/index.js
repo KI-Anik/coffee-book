@@ -1,3 +1,5 @@
+import toast from "react-hot-toast"
+
 // get all coffees from local storage
 const getAllFav = () => {
 
@@ -15,10 +17,11 @@ const getAllFav = () => {
 const addFavourite = coffee => {
     const favourite = getAllFav()
     const isExits = favourite.find(item => item.id == coffee.id)
-    
-    if(isExits) return alert('already exits')
+
+    if(isExits) return toast.error('already exits')
     favourite.push(coffee)
     localStorage.setItem('fav', JSON.stringify(favourite))
+    toast.success('added')
 }
 
 // remove a coffee to local storage 
