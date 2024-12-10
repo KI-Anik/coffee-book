@@ -13,7 +13,7 @@ const CoffeDetails = () => {
         setCoffee(singleData)
         const favourite = getAllFav()
         const isExits = favourite.find(item => item.id == singleData.id)
-        if(isExits){
+        if (isExits) {
             setBtn(true)
         }
     }, [data, id]);
@@ -29,9 +29,10 @@ const CoffeDetails = () => {
             <h2>
                 Coffee Details: {coffee.description}
             </h2>
-            <button disabled={btn} onClick={() =>
-
-                handleFavourite(coffee)}
+            <button
+                disabled={btn}
+                onClick={() =>
+                    handleFavourite(coffee)}
                 className='btn btn-warning'
             >Add to Favourite</button>
         </div>

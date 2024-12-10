@@ -15,15 +15,25 @@ const getAllFav = () => {
 
 // add a coffee to local storage 
 const addFavourite = coffee => {
-    const favourite = getAllFav()
-    const isExits = favourite.find(item => item.id == coffee.id)
+    console.log(coffee)
+    const favourites = getAllFav()
+    const isExits = favourites.find(item => item.id == coffee.id)
 
-    if(isExits) return toast.error('already exits')
-    favourite.push(coffee)
-    localStorage.setItem('fav', JSON.stringify(favourite))
+    if (isExits) return toast.error('already exits')
+
+    favourites.push(coffee)
+    localStorage.setItem('fav', JSON.stringify(favourites))
     toast.success('added')
 }
 
 // remove a coffee to local storage 
+const removeFav = (id) => {
+    const favourites = getAllFav()
+    const remaining = favourites.filter(item => item.id != id)
+    console.log(favourites, remaining)
 
-export { addFavourite, getAllFav }
+    localStorage.setItem('fav', JSON.stringify(remaining))
+    toast.success('removed')
+}
+
+export { addFavourite, getAllFav, removeFav }
